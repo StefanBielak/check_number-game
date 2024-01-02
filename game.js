@@ -17,7 +17,7 @@ const rl = readline.createInterface({
 
 let count = 0;
 const logFile = program.opts().file;
-const mind = Math.floor(Math.random() * 10) + 1;
+let mind = Math.floor(Math.random() * 10) + 1;
 
 const isValid = (value) => {
   if (isNaN(value)) {
@@ -56,24 +56,14 @@ const game = () => {
           await log(
             `${new Date().toLocaleDateString()}: Gratulacje. Odgadłeś liczbę za ${count} razem`
           );
-          rl.question("Chcesz zagrać ponownie? (T/N): ", (answer) => {
-            if (answer.toUpperCase() === "T") {
-              count = 0;
-              mind = Math.floor(Math.random() * 10) + 1;
-              game();
-            } else {
-              rl.close();
-            }
-          });
+
+          rl.close();
         } else {
           console.log("Nie zgadłeś. Kolejna próba.".red);
           game();
         }
       } catch (error) {
         console.error(`Błąd w grze: ${error.message}`.red);
-      } finally {
-
-        rl.close();
       }
     }
   );
