@@ -1,14 +1,7 @@
-const readline = require("readline");
-const fs = require("fs").promises;
-const { program } = require("commander");
-require("colors");
-
-program.option(
-  "-f, --file [type]",
-  "file for saving game results",
-  "results.txt"
-);
-program.parse(process.argv);
+import readline from "readline";
+import { promises as fs } from "fs";
+import { program } from "commander";
+import "colors";
 
 const rl = readline.createInterface({
   input: process.stdin,
